@@ -12,18 +12,18 @@
         <activity android:name=".user_detail"></activity>
         <activity android:name=".register" />
         <activity android:name=".login" />
-        <activity android:name=".splash_activity" />
-        <activity android:name=".profile" />
-        <activity android:name=".history" />
-        <activity android:name=".allergy" />
-        <activity android:name=".report" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".splash_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".profile" />
+        <activity android:name=".history" />
+        <activity android:name=".allergy" />
+        <activity android:name=".report" />
+        <activity android:name=".MainActivity"/>
         <activity
             android:name=".qr_code_pop"
             android:theme="@style/AppTheme.CustomTheme" />
