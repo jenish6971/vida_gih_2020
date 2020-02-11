@@ -73,13 +73,14 @@
 
     <DatePicker
         android:id="@+id/datePicker1"
-        android:layout_width="237dp"
-        android:layout_height="54dp"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
         android:layout_marginTop="60dp"
         android:datePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="40dp"
         app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />
 
     <EditText

@@ -2,6 +2,7 @@ package com.example.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -33,11 +34,14 @@ public class user_detail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(user_detail.this,
-                        "OnClickListener : " +
+                        "Details Submitted : " +
                                 "\nBlood Group : " + (bg.getSelectedItem()) +
                                 "\nGender : " + (gender.getSelectedItem()) +
                                 "\nDate:"+ day + month + year,
                         Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(user_detail.this, MainActivity.class));
+                finish();
             }
         });
 
