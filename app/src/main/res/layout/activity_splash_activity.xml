@@ -37,7 +37,7 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/product_sans_font"
         android:text="Tech Sentinels"
-        android:textColor="@color/dark_white"
+        android:textColor="@color/dark_dark_white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

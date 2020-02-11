@@ -15,6 +15,7 @@
     <color name="lightgray">#EDEDED</color>
     <color name="light_white">#FCFCFC</color>
     <color name="dark_white">#F1F3F6</color>
+    <color name="dark_dark_white">#D2D4DA</color>
     <color name="transparent">#00000000</color>
 
 </resources>

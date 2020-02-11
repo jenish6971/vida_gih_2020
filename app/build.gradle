@@ -31,4 +31,10 @@ dependencies {
 
     // qr code background blur dependency
     implementation 'com.eightbitlab:blurview:1.6.1'
+
+    // circular image view
+    implementation 'com.mikhaellopez:circularimageview:4.2.0'
+
+    // floating text button
+    implementation 'com.github.dimorinny:floating-text-button:0.0.4'
 }
