@@ -3,6 +3,7 @@ package com.example.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -20,6 +21,7 @@ public class user_detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_detail);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         bg = (Spinner)findViewById(R.id.blood_spinner);
         gender = (Spinner)findViewById(R.id.gender_spinner);
