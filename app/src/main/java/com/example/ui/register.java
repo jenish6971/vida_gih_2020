@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class register extends AppCompatActivity {
 
-    private EditText email, pass, conpass;
+    private EditText email, pass, conpass,name;
     private ImageButton next, back;
 
 
@@ -37,7 +37,8 @@ public class register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        email = (EditText) findViewById(R.id.signup_email_edittxt);
+        email = (EditText) findViewById(R.id.signup_aadhar_id_edittxt);
+        name = (EditText) findViewById(R.id.signup_name_edittxt);
         pass = (EditText) findViewById(R.id.signup_pass_edittxt);
         conpass = (EditText) findViewById(R.id.signup_con_pass_edittxt);
         next = (ImageButton) findViewById(R.id.signup_next_btn);
