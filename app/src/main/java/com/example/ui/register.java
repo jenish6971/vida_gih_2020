@@ -48,7 +48,17 @@ public class register extends AppCompatActivity {
             public void onClick(View v) {
                 //startActivity(new Intent(register.this, user_detail.class));
                 //finish();
-                registeruser();
+
+                if(pass.getText().toString().equals(conpass.getText().toString())){
+                    Toast.makeText(register.this, "Password Verified", Toast.LENGTH_SHORT).show();
+                    registeruser();
+                    startActivity(new Intent(register.this, MainActivity.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(register.this, "Password not same!!", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
