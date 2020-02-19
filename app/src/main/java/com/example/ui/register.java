@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class register extends AppCompatActivity {
 
-    private EditText email, pass, conpass,name;
+    private EditText aadhar_id, pass, conpass;
     private ImageButton next, back;
 
 
@@ -37,8 +37,7 @@ public class register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        email = (EditText) findViewById(R.id.signup_aadhar_id_edittxt);
-        name = (EditText) findViewById(R.id.signup_name_edittxt);
+        aadhar_id = (EditText) findViewById(R.id.signup_aadhar_id_edittxt);
         pass = (EditText) findViewById(R.id.signup_pass_edittxt);
         conpass = (EditText) findViewById(R.id.signup_con_pass_edittxt);
         next = (ImageButton) findViewById(R.id.signup_next_btn);
@@ -64,7 +63,7 @@ public class register extends AppCompatActivity {
     }
 
     private void registeruser() {
-        final String Email = email.getText().toString().trim();
+        final String aadar_id_ = aadhar_id.getText().toString().trim();
         final String Password = pass.getText().toString().trim();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.REGESTER_URL,
@@ -93,7 +92,7 @@ public class register extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("password",Password );
-                params.put("email",Email);
+                params.put("Aadhar id",aadar_id_);
                 return params;
             }
         };
