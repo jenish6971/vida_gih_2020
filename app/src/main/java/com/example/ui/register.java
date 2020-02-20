@@ -81,8 +81,8 @@ public class register extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(register.this, MainActivity.class));
 
+                            startActivity(new Intent(register.this, MainActivity.class));
 
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -7,10 +7,13 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class profile extends AppCompatActivity {
 
     ImageButton back_from_profile_java;
+
+    TextView fname,bg,uid,gender,dob,address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +21,27 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+
+
+        if (!SharedPref.getInstance(this).isLoggedIn()) {
+            finish();
+            startActivity(new Intent(this, login.class));
+        }
+        fname=findViewById(R.id.user_name);
+        bg=findViewById(R.id.blood_group);
+        uid=findViewById(R.id.user_uid);
+        gender=findViewById(R.id.gender);
+        dob=findViewById(R.id.dob);
+        address=findViewById(R.id.address);
         back_from_profile_java = (ImageButton) findViewById(R.id.back_from_profile);
+
+        User user = SharedPref.getInstance(this).getUser();
+
+        uid.setText(user.getAadhaar_id());
+        fname.setText(user.getF_name());
+        gender.setText(user.getGender());
+        dob.setText(user.getDob());
+        address.setText(user.getAddress());
 
         back_from_profile_java.setOnClickListener(new View.OnClickListener() {
             @Override
