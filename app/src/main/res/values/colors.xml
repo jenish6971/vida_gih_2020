@@ -19,4 +19,12 @@
     <color name="dark_dark_white">#D2D4DA</color>
     <color name="transparent">#00000000</color>
 
+    <!-- Card colors -->
+    <color name="blue_bug">#00AFFF</color>
+    <color name="blue_light_bug">#ECF1F3</color>
+    <color name="pink_bug">#EA036F</color>
+    <color name="pink_light_bug">#F8F4F6</color>
+    <color name="green_bug">#07C200</color>
+    <color name="green_light_bug">#EFF6EF</color>
+
 </resources>
