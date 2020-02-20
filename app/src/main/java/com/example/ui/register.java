@@ -52,8 +52,6 @@ public class register extends AppCompatActivity {
                 if(pass.getText().toString().equals(conpass.getText().toString())){
                     Toast.makeText(register.this, "Password Verified", Toast.LENGTH_SHORT).show();
                     registeruser();
-                    startActivity(new Intent(register.this, MainActivity.class));
-                    finish();
                 }
                 else{
                     Toast.makeText(register.this, "Password not same!!", Toast.LENGTH_SHORT).show();
@@ -83,6 +81,7 @@ public class register extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(register.this, MainActivity.class));
 
 
                         } catch (JSONException e) {
@@ -102,7 +101,7 @@ public class register extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("password",Password );
-                params.put("Aadhar id",aadar_id_);
+                params.put("aadhaar_id",aadar_id_);
                 return params;
             }
         };

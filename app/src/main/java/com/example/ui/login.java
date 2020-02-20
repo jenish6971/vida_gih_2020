@@ -23,7 +23,7 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        email = (EditText)findViewById(R.id.email_edittext);
+        email = (EditText)findViewById(R.id.aadhar_id_edittext);
         password = (EditText)findViewById(R.id.pass_edittext);
         next = (ImageButton) findViewById(R.id.next_btn);
         signup = (TextView)findViewById(R.id.signup_txt);
