@@ -111,7 +111,7 @@ public class login extends AppCompatActivity {
                                     finish();
                                 } else {
                                     Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getApplicationContext(), "Enter correct AID", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Enter correct AID or Password", Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
