@@ -2,16 +2,19 @@ package com.example.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.backup.SharedPreferencesBackupHelper;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.health.ServiceHealthStats;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class profile extends AppCompatActivity {
 
-    ImageButton back_from_profile_java;
+    ImageButton back_from_profile_java,log_out;
 
     TextView fname,bg,uid,gender,dob,address;
 
@@ -34,8 +37,9 @@ public class profile extends AppCompatActivity {
         dob=findViewById(R.id.dob);
         address=findViewById(R.id.address);
         back_from_profile_java = (ImageButton) findViewById(R.id.back_from_profile);
+        log_out=findViewById(R.id.logout_btn);
 
-        User user = SharedPref.getInstance(this).getUser();
+        final User user = SharedPref.getInstance(this).getUser();
 
         uid.setText(user.getAadhaar_id());
         fname.setText(user.getF_name());
@@ -48,6 +52,14 @@ public class profile extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(profile.this, MainActivity.class));
                 finish();
+            }
+        });
+
+
+        log_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPref.getInstance(getApplicationContext()).logout();
             }
         });
 
