@@ -2,29 +2,35 @@ package com.example.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.backup.SharedPreferencesBackupHelper;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.health.ServiceHealthStats;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class profile extends AppCompatActivity {
 
     ImageButton back_from_profile_java,log_out;
-
+    MultiFormatWriter multiFormatWriter=new MultiFormatWriter();
     TextView fname,bg,uid,gender,dob,address;
+    ImageView qr_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-
+        qr_code=findViewById(R.id.qr_code);
+        qr_code.setImageBitmap(qrGenerate());
 
         if (!SharedPref.getInstance(this).isLoggedIn()) {
             finish();
@@ -65,6 +71,21 @@ public class profile extends AppCompatActivity {
 
 
 
+    }
+
+    public Bitmap qrGenerate(){
+
+            User u = SharedPref.getInstance(this).getUser();
+            String info = u.getAadhaar_id().trim();
+        BitMatrix bitMatrix= null;
+        try {
+            bitMatrix = multiFormatWriter.encode(info, BarcodeFormat.QR_CODE,250,250);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+        BarcodeEncoder barcodeEncoder=new BarcodeEncoder();
+        Bitmap bitmap=barcodeEncoder.createBitmap(bitMatrix);
+        return bitmap;
     }
 
     @Override

@@ -243,34 +243,22 @@
             android:layout_height="wrap_content"
             android:background="@drawable/profile_background">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/user_profile_image"
+            <ImageView
+                android:id="@+id/qr_code"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/user_profile_photo"
-                app:civ_border_color="@color/dark_dark_white"
-                app:civ_border_width="4dp" />
+                />
 
-            <ImageButton
-                android:id="@+id/upload_profile_image_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignEnd="@+id/user_profile_image"
-                android:layout_alignBottom="@+id/user_profile_image"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/white_circle_bg"
-                android:elevation="5dp"
-                android:src="@drawable/ic_mode_edit_black_24dp" />
+
 
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/user_profile_image"
+                android:layout_below="@+id/qr_code"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/product_sans_font"
