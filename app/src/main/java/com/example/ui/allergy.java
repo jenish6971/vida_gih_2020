@@ -26,7 +26,6 @@ public class allergy extends AppCompatActivity implements allergy_bottomsheet_di
         setContentView(R.layout.activity_allergy);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
         back_from_allergy_java = (ImageButton) findViewById(R.id.back_from_allergy);
         add_allergy_btn_java = (FloatingActionButton) findViewById(R.id.add_allergy_btn);
 

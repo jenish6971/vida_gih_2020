@@ -1,10 +1,26 @@
 package com.example.ui;
 
+import android.content.Context;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class item_history {
 
     String diseasesname_name;
     String doctor_name;
     String diseases_date;
+    Context c;
 
     public item_history() {
     }
@@ -27,6 +43,8 @@ public class item_history {
         return diseases_date;
     }
 
+
+
     public void setDiseasesname_name(String diseasesname_name) {
         this.diseasesname_name = diseasesname_name;
     }
@@ -38,5 +56,10 @@ public class item_history {
     public void setDiseases_date(String diseases_date) {
         this.diseases_date = diseases_date;
     }
+    //StringRequest stringRequest = new StringRequest(Request.Method.POST,Constants.HISTORY_URL,)
+
+
+
+
 
 }
