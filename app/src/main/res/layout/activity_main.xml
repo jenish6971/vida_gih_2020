@@ -17,6 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_qr_code"
+        app:rippleColor="@color/white"
         app:maxImageSize="35dp"
         android:layout_margin="20dp"/>
 
