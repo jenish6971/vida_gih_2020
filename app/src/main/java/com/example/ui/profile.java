@@ -1,7 +1,9 @@
 package com.example.ui;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -65,7 +67,34 @@ public class profile extends AppCompatActivity {
         log_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPref.getInstance(getApplicationContext()).logout();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(profile.this);
+
+                builder.setIcon(R.drawable.ic_warning_black_24dp);
+
+                builder.setTitle("Logout");
+
+                builder.setMessage("Are you sure you want to Logout?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SharedPref.getInstance(getApplicationContext()).logout();
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+
+
             }
         });
 
@@ -79,7 +108,7 @@ public class profile extends AppCompatActivity {
             String info = u.getAadhaar_id().trim();
         BitMatrix bitMatrix= null;
         try {
-            bitMatrix = multiFormatWriter.encode(info, BarcodeFormat.QR_CODE,250,250);
+            bitMatrix = multiFormatWriter.encode(info, BarcodeFormat.QR_CODE,350,350);
         } catch (WriterException e) {
             e.printStackTrace();
         }
@@ -92,5 +121,6 @@ public class profile extends AppCompatActivity {
     public void onBackPressed() {
         finish();
         startActivity(new Intent(profile.this,MainActivity.class));
+        finish();
     }
 }
