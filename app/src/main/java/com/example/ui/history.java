@@ -33,7 +33,11 @@ import java.util.Map;
 
 public class history extends AppCompatActivity {
 
-
+    RecyclerView recyclerView ;
+    ArrayList<item_history> mlist;
+    adapter_history.Adapter adapter;
+    User user = SharedPref.getInstance(this).getUser();
+    String aid=user.getAadhaar_id();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +45,10 @@ public class history extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ImageButton back_from_history_java;
-        final List<item_history> mlist =new ArrayList<>() ;
-        final RecyclerView recyclerView = findViewById(R.id.history_recycle_view);
-        // Context context;
+        recyclerView = findViewById(R.id.history_recycle_view);
+
+
+        //final Context context = null;
 
         // setup recyclerview with the adapter
 
@@ -52,66 +57,21 @@ public class history extends AppCompatActivity {
 
 
 
-      // mlist.add(new item_history("Cholera","Dr.Jenish Dhanani","19/06/2014"));
+//       mlist.add(new item_history("Cholera","Dr.Jenish Dhanani","19/06/2014"));
 //        mlist.add(new item_history("Cold","Dr.Jenish Dhanani","19/06/2015"));
 //        mlist.add(new item_history("Plague","Dr.Jenish Dhanani","19/06/2016"));
 //        mlist.add(new item_history("Cold","Dr.Jenish Dhanani","19/06/2017"));
 //        mlist.add(new item_history("Cold","Dr.Jenish Dhanani","19/06/2018"));
 
-        final User user = SharedPref.getInstance(this).getUser();
-        final String aid=user.getAadhaar_id();
+        fatch_data();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                Constants.HISTORY_URL,
-                new Response.Listener<String>() {
-
-                    @Override
-                    public void onResponse(String response) {
-//                        if(response.isEmpty()) {
-//                            Toast.makeText(getApplicationContext(), "empty..", Toast.LENGTH_LONG).show();
-//                        }else
-//                        {Toast.makeText(getApplicationContext(), "value is hear...", Toast.LENGTH_LONG).show();}
-                        try {
-                            JSONObject object=new JSONObject(response);
-                           JSONArray jsonArray = object.getJSONArray(response);
-                            Toast.makeText(getApplicationContext(),jsonArray.getString(0),Toast.LENGTH_LONG).show();
-
-                            for(int i=0;i<jsonArray.length();i++){
-                                JSONObject c = jsonArray.getJSONObject(i);
-                                Toast.makeText(getApplicationContext(),c.getString("doctor_name"),Toast.LENGTH_LONG).show();
-                                String disease=c.getString("disease");
-                                String doctor_name=c.getString("doctor_name");
-                                String date=c.getString("date");
-
-                                item_history itemHistory=new item_history(disease,doctor_name,date);
-//                                itemHistory.setDiseases_date(date);
-//                                itemHistory.setDoctor_name(doctor_name);
-//                                itemHistory.setDiseasesname_name(disease);
-                                Toast.makeText(getApplicationContext(),itemHistory.doctor_name,Toast.LENGTH_LONG).show();
-                                mlist.add(itemHistory);
-
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                           Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
-                        }
-                    }
-
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }){ protected Map<String, String> getParams() throws AuthFailureError {
-            Map<String, String> params = new HashMap<>();
-
-            params.put("aadhaar_id", aid);
-            return params;
-        }};
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+//        adapter_history.Adapter adapter = new adapter_history.Adapter(this,mlist);
+//
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
+//
 
         back_from_history_java = (ImageButton) findViewById(R.id.back_from_history);
 
@@ -125,6 +85,61 @@ public class history extends AppCompatActivity {
 
 
 
+    }
+
+    private void fatch_data() {
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, Constants.HISTORY_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                           // JSONObject object=new JSONObject(response);
+                            mlist =new ArrayList<>() ;
+                            JSONArray jsonArray=new JSONArray(response);
+                           // Toast.makeText(getApplicationContext(),String.valueOf(jsonArray.length()),Toast.LENGTH_LONG).show();
+                            for (int i=0;i<jsonArray.length();i++){
+                                //JSONArray jsonArray=object.getJSONArray(i);
+                                JSONObject jsonObject=jsonArray.getJSONObject(i);
+                                mlist.add(new item_history(jsonObject.getString("disease"),
+                                        jsonObject.getString("doctor_name"),
+                                        jsonObject.getString("date")));
+
+                            }
+                            setupRecycler();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("aadhaar_id",aid);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+
+
+    }
+
+    private void setupRecycler() {
+        adapter=new adapter_history.Adapter(this,mlist);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
