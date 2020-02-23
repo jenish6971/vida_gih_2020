@@ -32,20 +32,22 @@
                 android:layout_marginLeft="20dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/allergy_name_text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/product_sans_font"
                     android:text="Allergy Name"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/product_sans_font"/>
+                    android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/allergy_side_effects_text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/product_sans_font"
                     android:text="Allergy Side Effects"
                     android:textColor="@color/gray"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/product_sans_font"/>
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
