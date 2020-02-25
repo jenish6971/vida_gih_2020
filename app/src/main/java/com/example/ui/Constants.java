@@ -8,6 +8,7 @@ public class Constants {
     public static final String HISTORY_URL = ROOT_URL + "history.php";
     public static final String REPORT_URL = ROOT_URL + "report.php";
     public static final String ALLERGY_URL = ROOT_URL + "allergy.php";
+    public static final String ADD_ALLERGY_URL = ROOT_URL + "add_allergy.php";
 
 
 }

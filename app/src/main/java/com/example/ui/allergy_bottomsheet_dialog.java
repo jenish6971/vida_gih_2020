@@ -39,7 +39,7 @@ public class allergy_bottomsheet_dialog extends BottomSheetDialogFragment {
     }
 
     public interface BottomSheetListener {
-            void onButtonClicked(String allergy_named, String allergy_side_effected);
+        void onButtonClicked(String allergy_named, String allergy_side_effected);
     }
 
     @Override

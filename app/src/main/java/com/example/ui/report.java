@@ -49,17 +49,17 @@ public class report extends AppCompatActivity {
         // setup recyclerview with the adapter
         recyclerView = findViewById(R.id.report_recycle_view);
 
-//        List<item_report> mlist = new ArrayList<>();
+         mlist = new ArrayList<>();
 //        mlist.add(new item_report("Report A","19/06/2014"));
 //        mlist.add(new item_report("Report B","19/06/2015"));
 //        mlist.add(new item_report("Report C","19/06/2016"));
 //        mlist.add(new item_report("Report D","19/06/2017"));
 //        mlist.add(new item_report("Report E","19/06/2018"));
 //        mlist.add(new item_report("Report F","19/06/2019"));
-//        adapter_report.Adapter adapter = new adapter_report.Adapter(this,mlist);
+        //adapter_report.Adapter adapter = new adapter_report.Adapter(this,mlist);
 //
 //        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+       //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fatch_data();
         report_save_pdf_btn=findViewById(R.id.report_save_pdf_btn);
 //        report_save_pdf_btn.setOnClickListener(new View.OnClickListener() {

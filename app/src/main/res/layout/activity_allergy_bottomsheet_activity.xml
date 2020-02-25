@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".allergy_bottomsheet_activity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/bug_img"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/circle_pink_bg"
+            android:padding="18dp"
+            android:src="@drawable/ic_bug_report_black_24dp" />
+
+        <EditText
+            android:id="@+id/allergy_name"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/bug_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/textbox_background"
+            android:fontFamily="@font/product_sans_font"
+            android:hint="Allergy Name"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/allergy_side_effects"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/allergy_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/textbox_background"
+            android:fontFamily="@font/product_sans_font"
+            android:hint="Side Effects to you"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/allergy_description"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/allergy_side_effects"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/textbox_background"
+            android:fontFamily="@font/product_sans_font"
+            android:hint="Allergy Description"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/allergy_submit_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/allergy_description"
+            android:layout_alignEnd="@+id/allergy_description"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/circular_light_pink_bg"
+            android:elevation="0dp"
+            android:fontFamily="@font/product_sans_font"
+            android:text="Add Allergy"
+            android:textAllCaps="false"
+            android:textColor="@color/pink"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -39,6 +40,7 @@ public class allergy extends AppCompatActivity implements allergy_bottomsheet_di
     adapter_allergy.Adapter adapter;
     User user = SharedPref.getInstance(this).getUser();
     String aid=user.getAadhaar_id();
+    allergy_bottomsheet_dialog.BottomSheetListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,17 +63,27 @@ public class allergy extends AppCompatActivity implements allergy_bottomsheet_di
         add_allergy_btn_java.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                allergy_bottomsheet_dialog bottomsheet = new allergy_bottomsheet_dialog();
-                bottomsheet.show(getSupportFragmentManager(),"add_allegry_bottomsheet");
+//                allergy_bottomsheet_dialog bottomsheet = new allergy_bottomsheet_dialog();
+//                bottomsheet.show(getSupportFragmentManager(),"add_allegry_bottomsheet");
+                startActivity(new Intent(allergy.this, allergy_bottomsheet_activity.class));
+
+
             }
         });
+
+
+       // mlist = new ArrayList<>();
+        //mlist.add(new item_allergy("NAme","side_effects"));
+        // adapter_allergy.Adapter adapter = new adapter_allergy.Adapter(this,mlist);
+       // recyclerView.setAdapter(adapter);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fatch_data();
     }
 
     private void fatch_data() {
 
-        StringRequest stringRequest= new StringRequest(Request.Method.POST, Constants.REPORT_URL,
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, Constants.ALLERGY_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -82,7 +94,9 @@ public class allergy extends AppCompatActivity implements allergy_bottomsheet_di
                             // Toast.makeText(getApplicationContext(),String.valueOf(jsonArray.length()),Toast.LENGTH_LONG).show();
                             for (int i=0;i<jsonArray.length();i++){
                                 //JSONArray jsonArray=object.getJSONArray(i);
+
                                 JSONObject jsonObject=jsonArray.getJSONObject(i);
+                                Toast.makeText(getApplicationContext(),jsonObject.getString("allergy_name"),Toast.LENGTH_LONG).show();
                                 mlist.add(new item_allergy(jsonObject.getString("allergy_name"),
                                         jsonObject.getString("allergy_side_effects")));
 
@@ -120,6 +134,8 @@ public class allergy extends AppCompatActivity implements allergy_bottomsheet_di
 
     }
 
+
+
     private void setupRecycler() {
         adapter=new adapter_allergy.Adapter(this,mlist);
         recyclerView.setAdapter(adapter);
@@ -147,7 +163,7 @@ public class allergy extends AppCompatActivity implements allergy_bottomsheet_di
 //        ArrayList<ExampleItem> mExampleList
 //
 //        mExampleList = new ArrayList<>();
-//        mExampleList.add(new ExampleItem(allergy_named,allergy_side_effected));
+  //     mExampleList.add(new ExampleItem(allergy_named,allergy_side_effected));
 //
 
     }
