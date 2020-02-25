@@ -45,6 +45,7 @@ public class allergy_bottomsheet_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 fatch_data();
+                startActivity(new Intent(getApplicationContext(),allergy.class));
                 //Toast.makeText(getApplicationContext(),allergy_name.getText().toString(),Toast.LENGTH_LONG).show();
                 //Toast.makeText(getApplicationContext(),allergy_side_effects.getText().toString(),Toast.LENGTH_LONG).show();
                // Toast.makeText(getApplicationContext(),allergy_description,Toast.LENGTH_LONG).show();
